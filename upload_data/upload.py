@@ -10,7 +10,7 @@ from src.logger import logging
 
 try:
     logging.info("Trying to setup Mongo Db connection")
-    uri = "mongodb+srv://shivansh1:yJpFVQCIQrcQUfht@cluster0.yc3hy9y.mongodb.net/?retryWrites=true&w=majority"
+    uri = "mongodb+srv://shivansh1:<password>@cluster0.yc3hy9y.mongodb.net/?retryWrites=true&w=majority"
     client = MongoClient(uri)
     logging.info("Pinged Successfully")
 
