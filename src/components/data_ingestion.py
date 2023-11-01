@@ -2,12 +2,12 @@ import os
 import sys
 from dataclasses import dataclass
 
+import numpy as np
 import pandas as pd
+from pymongo.mongo_client import MongoClient
 
 from src.exception import CustomException
 from src.logger import logging
-
-from sklearn.model_selection import train_test_split
 
 
 @dataclass
@@ -19,18 +19,33 @@ class DataIngestion:
     def __init__(self):
         self.ingestion_config = DataIngestionConfig()
 
-    def load_dataset(self):
-        pass
+    @staticmethod
+    def load_dataset(collection_name, database_name):
+        try:
+            uri = "mongodb+srv://shivansh1:yJpFVQCIQrcQUfht@cluster0.yc3hy9y.mongodb.net/?retryWrites=true&w=majority"
+            mongo_client = MongoClient(uri)
+
+            collection = mongo_client[database_name][collection_name]
+            df = pd.DataFrame(list(collection.find()))
+
+            if "_id" in df.columns.to_list():
+                df = df.drop("_id", axis=1)
+
+            df.replace({"na": np.nan}, inplace=True)
+
+            return df
+
+        except Exception as e:
+            logging.error("Error while exporting the data", exc_info=True)
+            raise CustomException(e, sys)
 
     # Return train,test.csv paths
     def initiate_data_ingestion(self):
         try:
 
-            # Load the dataset from mondodb
             logging.info('Directory made')
             os.makedirs(os.path.dirname(self.ingestion_config.raw_path), exist_ok=True)
-            df = pd.read_csv(os.path.abspath(os.path.join(os.getcwd(), '..', '..', 'notebooks', 'Data',
-                                                          'wafer_23012020_041211.csv')))  ## Change the path please of exported data
+            df = self.load_dataset("sensor_fault", "learning")
             df.to_csv(self.ingestion_config.raw_path, index=False)
             logging.info('Saved Successfully')
             return self.ingestion_config.raw_path

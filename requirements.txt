@@ -6,3 +6,4 @@ matplotlib
 imblearn
 xgboost
 pymongo
+flask

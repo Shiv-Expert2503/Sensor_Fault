@@ -52,14 +52,12 @@ class DataTransformation:
 
             preprocessor = self.get_preprocessor()
 
-            cols_to_drop = get_redundant_cols(data)
-            cols_to_drop.append('Unnamed: 0')
-            cols_to_drop.append('Good/Bad')
+            cols_to_drop = ['Unnamed: 0', 'Good/Bad']
+            # cols_to_drop = get_redundant_cols(data)
 
             logging.info("Dividing into Dependent and independent features")
             X = data.drop(cols_to_drop, axis=1)
-            y = data['Good/Bad']
-            y = np.where(y == -1, 0, 1)
+            y = np.where(data['Good/Bad'] == -1, 0, 1)
             logging.info("Dividing completed")
 
             logging.info("Splitting and Transforming Started")
