@@ -17,6 +17,9 @@ class ModelConfig:
 
 
 class ModelTrainer:
+    """
+    Initializing all the models here
+    """
     def __init__(self):
         self.model_path = ModelConfig()
 
@@ -28,6 +31,11 @@ class ModelTrainer:
         }
 
     def initiate_model_training(self, train_array, test_array):
+        """
+        @params: train, test array
+        This function takes the array and trains them on the model and log the reports in the folder.
+        It then save the best model of all which gives the best accuracy.
+        """
         try:
             logging.info("Splitting the data into dependent and independent features")
             (x_train, y_train, x_test, y_test) = (
