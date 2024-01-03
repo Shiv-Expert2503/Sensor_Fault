@@ -10,6 +10,11 @@ from src.logger import logging
 
 
 def evaluate_model(x, y, models) -> dict:
+    """
+    This is a general function to evaluate a single model at a time.
+    @params: x is the data without output and y is the output column, models is the list of models to predict
+    @returns: The model score in dict format
+    """
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
     report = {}
 
@@ -28,6 +33,10 @@ def evaluate_model(x, y, models) -> dict:
 
 
 def save_object(path: str, obj):
+    """
+    This function is used to store objects in the local environment in write-binary format
+    @params: path where to save and obj is object to store
+    """
     try:
         logging.info(f"Dumping starts of {str(obj)}")
         os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -43,6 +52,10 @@ def save_object(path: str, obj):
 
 
 def load_object(path):
+    """
+    This function is used to load the saved objects in read-binary format
+    @params: Takes only the path where the object has been saved
+    """
     try:
         logging.info("Loading starts ")
         with open(path, 'rb') as obj:
