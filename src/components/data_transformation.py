@@ -31,6 +31,9 @@ class DataTransformation:
 
     @staticmethod
     def get_preprocessor():
+        """
+        @returns: the pipeline for transformation
+        """
         try:
             logging.info("Creating Pipeline")
             imputer = KNNImputer(n_neighbors=5)
@@ -45,6 +48,13 @@ class DataTransformation:
             raise CustomException(e, sys)
 
     def initiate_data_transformation(self, data_path):
+        """
+        @params: data_path which needs to be transformed
+        
+        the data is then read and transformed using a pipeline and then split into train, test
+        
+        @returns: the train, test data in array format and preprocessor_path
+        """
         try:
             logging.info('Reading Data')
             data = pd.read_csv(data_path)
