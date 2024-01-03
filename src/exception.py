@@ -2,6 +2,10 @@ import sys
 
 
 def error_message_detail(error, error_detail: sys):
+    """
+    @params: Takes the error details in sys format
+    @return: The error message in string format
+    """
     _, _, exc_tb = error_detail.exc_info()
 
     file_name = exc_tb.tb_frame.f_code.co_filename
@@ -12,6 +16,11 @@ def error_message_detail(error, error_detail: sys):
 
 
 class CustomException(Exception):
+    """
+    This is my custom exception handler which is required to set the code to package.
+    @params: Takes error message and error_details
+    And then calls the function to console.log the error report.
+    """
     def __init__(self, error_message, error_detail: sys):
         super.__init__(error_message)
 
