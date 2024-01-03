@@ -21,8 +21,13 @@ class DataIngestion:
 
     @staticmethod
     def load_dataset(collection_name, database_name):
+        """
+        @params: database_collection_name in string format
+        @params: database_name in string format
+        @returns: pd.DataFrame
+        """
         try:
-            uri = "mongodb+srv://shivansh1:yJpFVQCIQrcQUfht@cluster0.yc3hy9y.mongodb.net/?retryWrites=true&w=majority"
+            uri = "uri"
             mongo_client = MongoClient(uri)
 
             collection = mongo_client[database_name][collection_name]
