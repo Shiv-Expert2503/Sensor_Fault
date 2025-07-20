@@ -1,3 +1,8 @@
+# Build essentials - add these two lines at the top
+setuptools
+wheel
+
+# Your project libraries
 pandas==2.0.3 
 numpy==1.25.2
 scikit-learn==1.3.2
