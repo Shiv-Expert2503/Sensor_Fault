@@ -7,3 +7,4 @@ imblearn
 xgboost
 pymongo
 flask
+gunicorn
