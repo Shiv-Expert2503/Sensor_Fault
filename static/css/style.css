@@ -156,3 +156,18 @@ body {
 #download-btn {
     margin-bottom: 15px;
 }
+
+.loader {
+  border: 5px solid #f3f3f3; /* Light grey circle */
+  border-top: 5px solid darkmagenta; /* Spinner color */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 1rem auto; /* Center the spinner */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
