@@ -42,7 +42,7 @@
 
 <!--  new changes adding download button-->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -83,5 +83,62 @@
 
 </form>
 
+</body>
+</html> -->
+
+
+
+
+<!-- Changes made to the upload_file.html file for the values look UI -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sensor Fault Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="main-title">Sensor Fault Detection</h1>
+        <p class="intro-text">
+            This project tackles a realistic industrial challenge: a highly imbalanced dataset where 'good' sensor readings are rare. The model is trained to identify these 'bad' states, which form the vast majority of the data.
+        </p>
+
+
+        <form id="prediction-form" class="upload-form">
+            <label for="file-input" class="dropzone">
+                <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon">
+                <p id="dropzone-text">Drop file to upload or click here</p>
+                <input type="file" id="file-input" class="upload-input" accept=".csv">
+            </label>
+            <p id="file-name-display" class="file-name"></p>
+            <div id="loader" class="loader" style="display: none;"></div>
+            <button type="submit" class="btn">Predict</button>
+        </form>
+
+        <div class="sample-download">
+            <p>
+                Don't have a sample file? <a href="https://shiv2503portfolio.netlify.app/test.csv" download>Download one here.</a>
+                <br>
+                <small>Note: This is a small subset for quick testing. For more details, please refer to the project <a href="https://github.com/Shiv-Expert2503/Sensor_Fault" target="_blank">documentation</a>.</small>
+            </p>
+        </div>
+    </div>
+
+    <div id="preview-container" class="table-container" style="display: none;">
+        <h2>Uploaded Data Preview (Editable)</h2>
+        <div id="data-preview"></div>
+    </div>
+    <div id="results-container" class="table-container" style="display: none;">
+        <h2>Prediction Results</h2>
+        <button id="download-btn" class="btn">Download Results as CSV</button>
+        <div id="prediction-results"></div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="/static/js/script.js"></script>
 </body>
 </html>

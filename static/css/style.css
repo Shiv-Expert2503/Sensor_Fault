@@ -1,85 +1,158 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:700,300);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700,400,300);
 
-.frame {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    height: 400px;
-    margin-top: -200px;
-    margin-left: -200px;
-    border-radius: 2px;
-    box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    background: linear-gradient(to top right, darkmagenta 0%, hotpink 100%);
-    color: #333;
+body {
     font-family: "Open Sans", Helvetica, sans-serif;
-}
-
-.center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 260px;
-    border-radius: 3px;
-    box-shadow: 8px 10px 15px 0 rgba(0, 0, 0, 0.2);
-    background: #fff;
+    background-color: #f0f2f5;
+    color: #333;
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
     flex-direction: column;
+    align-items: center;
+    padding: 2rem;
 }
 
-.title {
+.main-container {
     width: 100%;
-    height: 50px;
-    border-bottom: 1px solid #999;
+    max-width: 900px;
     text-align: center;
 }
 
-h1 {
-    font-size: 16px;
-    font-weight: 300;
-    color: #666;
+.main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.intro-text {
+    margin: 1rem auto 2rem auto;
+    max-width: 600px;
+    color: #4b5563;
+}
+
+.upload-form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
 }
 
 .dropzone {
-    width: 100px;
-    height: 80px;
-    border: 1px dashed #999;
-    border-radius: 3px;
-    text-align: center;
+    width: 100%;
+    height: 150px;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.dropzone:hover {
+    background-color: #f9fafb;
+    border-color: #6b7280;
 }
 
 .upload-icon {
-    margin: 25px 2px 2px 2px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.5rem;
+}
+
+#dropzone-text {
+    color: #6b7280;
+    font-weight: 300;
+    margin: 0;
 }
 
 .upload-input {
-    position: relative;
-    top: -62px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
+    display: none; /* We hide the ugly default input */
+}
+
+.file-name {
+    font-style: italic;
+    color: #4b5563;
+    min-height: 1.2em; /* Prevents layout shift when name appears */
 }
 
 .btn {
     display: block;
-    width: 140px;
-    height: 40px;
+    width: 160px;
+    height: 45px;
     background: darkmagenta;
     color: #fff;
-    border-radius: 3px;
+    border-radius: 5px;
     border: 0;
     box-shadow: 0 3px 0 0 hotpink;
     transition: all 0.3s ease-in-out;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
 }
 
 .btn:hover {
     background: rebeccapurple;
     box-shadow: 0 3px 0 0 deeppink;
+}
+
+.sample-download {
+    margin-top: 1rem;
+    font-size: 14px;
+}
+
+.sample-download a {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* Table styles from before (they are good) */
+.table-container {
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9fafb;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table-container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+#data-preview, #prediction-results {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table-container th, .table-container td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table-container thead th {
+    background-color: #f3f4f6;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+#download-btn {
+    margin-bottom: 15px;
 }
