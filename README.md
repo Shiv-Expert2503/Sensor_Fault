@@ -1,6 +1,6 @@
 # Sensor Fault Detection: An End-to-End MLOps Project
 
-![Project Demo GIF](link_to_your_demo.gif)
+![Project Demo GIF](./demo/sensor_fault.gif)
 
 This project demonstrates a complete, end-to-end MLOps pipeline for a real-world industrial problem: detecting faults in sensor data from semiconductor wafers. The focus is on building a robust, reproducible, and deployable system.
 
